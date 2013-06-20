@@ -32,7 +32,11 @@ module.exports = function (grunt) {
                     '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
                 ],
                 tasks: ['livereload']
-            }
+            },
+            less: {
+                files: ['<%= yeoman.app %>/styles/*.less'],
+                tasks: ['less']
+            },
         },
         connect: {
             options: {
@@ -105,6 +109,25 @@ module.exports = function (grunt) {
                 options: {
                     run: true,
                     urls: ['http://localhost:<%= connect.options.port %>/index.html']
+                }
+            }
+        },
+        less: {
+            dist: {
+                options: {
+                    paths: ['app/components'],
+                    yuicompress: true
+                },
+                files: {
+                    '.tmp/styles/main.css': '<%= yeoman.app %>/styles/main.less'
+                }
+            },
+            server: {
+                options: {
+                    paths: ['app/components']
+                },
+                files: {
+                    '.tmp/styles/main.css': '<%= yeoman.app %>/styles/main.less',
                 }
             }
         },
@@ -234,6 +257,7 @@ module.exports = function (grunt) {
 
         grunt.task.run([
             'clean:server',
+            'less:server',
             'concurrent:server',
             'livereload-start',
             'connect:livereload',
@@ -244,6 +268,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('test', [
         'clean:server',
+        'less',
         'concurrent:test',
         'connect:test',
         'mocha'
@@ -251,6 +276,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('build', [
         'clean:dist',
+        'less:dist',
         'useminPrepare',
         'concurrent:dist',
         'cssmin',
