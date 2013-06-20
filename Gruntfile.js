@@ -24,6 +24,10 @@ module.exports = function (grunt) {
     grunt.initConfig({
         yeoman: yeomanConfig,
         watch: {
+            less: {
+                files: ['<%= yeoman.app %>/styles/*.less'],
+                tasks: ['less']
+            },
             livereload: {
                 files: [
                     '<%= yeoman.app %>/*.html',
@@ -32,10 +36,6 @@ module.exports = function (grunt) {
                     '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
                 ],
                 tasks: ['livereload']
-            },
-            less: {
-                files: ['<%= yeoman.app %>/styles/*.less'],
-                tasks: ['less']
             },
         },
         connect: {
