@@ -4,7 +4,7 @@
 @import './fonts';
 
 body {
-  background: #bb0;
+  background: #FFF;
   margin-top: 40px;
   font-family: 'Conv_ProximaNova-Light';
   font-size: 16px;
@@ -29,7 +29,7 @@ body {
 }
 section { 
   .row-fluid {
-    max-width: 940px;
+    max-width: 960px;
     display: block;
     margin: 0 auto;
   }
@@ -59,7 +59,7 @@ h2 {
 #main {
   background-color: #F6F6F6;
   padding: 40px 0 60px;
-  &:nth-child(1){
+  &>div:nth-child(1){
     margin-bottom: 60px;
   }
 }
@@ -72,10 +72,21 @@ h2 {
   padding-top: 50px;
 }
 
+.logo a {
+  text-decoration: none;
+}
+a h2 {
+  transition: all 1s ease-in-out;
+  &:hover{
+    color:#F26C4F;
+  }
+}
 
-img:big-image {
+img.big-image {
   display: block;
   margin: 0 auto;
+  width: 80%;
+  max-width: 1280px;
 }
 
 .suscribe-btn {
@@ -89,6 +100,24 @@ img:big-image {
   padding: 1em 1.5em;
   font-weight: 200;
   font-family: 'Montserrat', sans-serif;
+  transition: all 0.5s ease;
+
+  &:hover {
+    background-color: #fff;
+    color: #D04E33;
+    border-bottom: 3px #CCC solid;
+  }
+  &:active {
+    color: #F26C4F;
+    background-color: #eee;
+  }
+}
+
+.social-link img {
+  transition: all 200ms ease-in-out;
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 .more-info {
